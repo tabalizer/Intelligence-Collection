@@ -80,6 +80,7 @@
 - 🌍 **Google Dorking:** Rapid public data discovery
 - 🔄 **Maltego:** Relationship analysis
 - 🌐 **OSINT Industries:** Comprehensive cross-platform data searches
+- 🐉 **Shadowdragon:** Cross Platform Data Search & Visualization
 
 ---
 
