@@ -1,6 +1,3 @@
-Understood — here’s the **Signal OSINT Cheat Sheet** exactly in **one single ` ```markdown ` code block**, with no inner triple backticks, no HTML/YAML, and nothing that can break the fence.
-
-```markdown
 # Signal OSINT Cheat Sheet
 _Last verified: 2025-08-10 • Scope: open-source collection only. Use ethically and comply with local law, privacy regulations, and Signal’s ToS._
 
