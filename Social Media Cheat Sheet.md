@@ -1,194 +1,65 @@
-# 📱 SOCIAL MEDIA OSINT TECHNIQUES CHEAT SHEET
+# Social Media OSINT Cheat Sheet (General)
+_Last verified: 2025-08-10 • Scope: open-source collection only (no credentialed access). Designed as a high-level reference before pivoting to platform-specific sheets._
 
-Social media OSINT (Open Source Intelligence) focuses on analyzing public digital content to extract actionable intelligence. It’s widely used in investigations, threat intelligence, journalism, and competitive business monitoring.
+## 1) Purpose
+To provide a unified checklist for investigating any social media platform, ensuring consistent methodology before diving into platform-specific OSINT techniques.
 
----
+## 2) Discovery & collection workflow
+1) Seed  
+   - Start with one or more identifiers: handle, display name, phone number, email, image, or keyword.  
+2) Expand entities  
+   - Search platform-native and external search engines for the identifier.  
+   - Pivot via hashtags, geotags, tagged accounts, shared media, or linked profiles.  
+3) Corroborate & date  
+   - Confirm account matches through profile pictures, bio text, posting style, location clues, and mutual connections.  
+4) Capture  
+   - Save stable profile/post URLs, screenshots, and metadata (timestamp, content type, engagement).
 
-## 🕸️ Network Mapping & Analysis
+## 3) Universal search techniques
+- Google dorking:  
+  `"username" site:{platform}.com`  
+  `"email@example.com" site:{platform}.com`  
+  `"phone number" site:{platform}.com`  
+- Hashtag search: `{platform_url}/explore/tags/{hashtag}`  
+- Geotag search (if supported): `{platform_url}/explore/locations/{location_id}`  
+- Image reverse search for profile pics or posted content.
 
-**🎯 Purpose:** Identify influencers, clusters, and disinformation nodes.
+## 4) Core OSINT surfaces on any platform
+- **Profile page**: Handle, display name, bio, profile pic, external links, join date, follower/following counts.  
+- **Posts**: Text, hashtags, tagged accounts, media, timestamps, engagement.  
+- **Hashtag pages**: Trend clusters, recurring accounts.  
+- **Location pages**: Posts tied to a place; potential for event detection.  
+- **Media hosting links**: Sometimes reveal file naming patterns or metadata.
 
-🔧 Techniques:
-- Follower/following graphing
-- Retweet/reply/mention chains
-- Hashtag or keyword-based community mapping
+## 5) Cross-platform pivoting
+- Handles reused across platforms.  
+- External links in bios leading to other accounts.  
+- Shared content (identical photo/video) uploaded to multiple platforms.  
 
-🛠️ Tools:
-- Maltego  
-- Gephi  
-- Cytoscape  
-- **ShadowDragon SocialNet**  
-- **Paliscope Suite**
+## 6) Third-party tools & directories
+- **WhatsMyName** — username checks across hundreds of sites.  
+- **Namechk / Namecheckup** — username availability and discovery.  
+- **Social Searcher** — mentions and hashtags across platforms.  
+- **Exiftool** — check for retained metadata in images/videos (many platforms strip this).  
+**Caveats:** Tools may have limited coverage or outdated data—verify matches manually.
 
----
+## 7) Stabilizing URLs
+- Remove tracking parameters (`?utm_source=...`) for long-term stable links.  
+- Keep note of both the canonical and any shortened/redirected versions.
 
-## 🔖 Hashtag Tracking
+## 8) Current 2025 behaviors
+- Most major platforms now gate significant content behind login; direct URL access still works in many cases.  
+- Rate limits and anti-scraping measures have increased; rotate IPs and limit requests.  
 
-**🎯 Purpose:** Understand narrative evolution, trends, and coordination.
+## 9) Rate limits, gating & tips
+- Use multiple accounts or logged-out browsing with clean sessions.  
+- Archive important profiles/posts immediately—content can be removed at any time.
 
-🔧 Techniques:
-- Hashtag frequency tracking  
-- Co-occurrence graphs  
-- Geographic correlation  
-- Influencer detection
+## 10) Documentation hygiene
+- Record: platform name, URL, capture date (UTC), identifiers searched, pivots found, and match confidence.  
+- Store findings in a structured format (CSV/JSON) for cross-referencing with other cases.
 
-🛠️ Tools:
-- TweetDeck  
-- Meltwater  
-- Keyhole  
-- **OSINT Industries**  
-- **ShadowDragon SocialNet**  
-- **Paliscope Suite**
-
----
-
-## 🧑‍💻 Profile Analysis
-
-**🎯 Purpose:** Build behavioral/user profiles from social metadata.
-
-🔧 Techniques:
-- Username reuse detection  
-- Profile metadata mining  
-- Historical content review
-
-🛠️ Tools:
-- Maigret  
-- Sherlock  
-- WhatsMyName  
-- **OSINT Industries**  
-- **ShadowDragon SocialNet**  
-- **Paliscope Suite**
-
----
-
-## 🌍 Social Media Geolocation
-
-**🎯 Purpose:** Determine real-world locations from posts and visuals.
-
-🔧 Techniques:
-- Geo-tag parsing  
-- Landmark/image correlation  
-- Cross-platform geo-triangulation
-
-🛠️ Tools:
-- EXIFTool  
-- SunCalc  
-- Mapillary  
-- Google Earth  
-- **OSINT Industries**  
-- **ShadowDragon SocialNet**  
-- **Paliscope Suite**
-
----
-
-## 🗝️ Keyword Monitoring
-
-**🎯 Purpose:** Detect threats, campaigns, or high-interest trends.
-
-🔧 Techniques:
-- Boolean keyword operators  
-- Sentiment filters  
-- Real-time alerts  
-- Topic clustering
-
-🛠️ Tools:
-- Meltwater  
-- Social Searcher  
-- n8n with LLM Agents  
-- **OSINT Industries**  
-- **ShadowDragon SocialNet**  
-- **Paliscope Suite**
-
----
-
-## 🖼️ Image Analysis
-
-**🎯 Purpose:** Verify authenticity, extract location, or match content.
-
-🔧 Techniques:
-- Reverse image search  
-- EXIF metadata extraction  
-- Logo/facial recognition  
-- Pixel-level ELA (Error Level Analysis)
-
-🛠️ Tools:
-- TinEye  
-- Google Reverse Image  
-- Forensically  
-- **OSINT Industries**  
-- **ShadowDragon SocialNet**  
-- **Paliscope Suite**
-
----
-
-## 🕓 Temporal Analysis
-
-**🎯 Purpose:** Uncover behavioral patterns and link events.
-
-🔧 Techniques:
-- Posting timeline mapping  
-- Time zone inference  
-- Correlation with known events
-
-🛠️ Tools:
-- Excel, Pandas  
-- Kibana  
-- **OSINT Industries**  
-- **ShadowDragon SocialNet**  
-- **Paliscope Suite**
-
----
-
-## 🔁 Cross-Platform Correlation
-
-**🎯 Purpose:** Link multiple accounts to a single user or group.
-
-🔧 Techniques:
-- Username reuse  
-- Content similarity  
-- Writing style comparison  
-- Visual asset duplication
-
-🛠️ Tools:
-- Maltego  
-- Sherlock  
-- n8n + MCP  
-- **OSINT Industries**  
-- **ShadowDragon SocialNet**  
-- **Paliscope Suite**
-
----
-
-## ⚠️ Fake Account Detection
-
-**🎯 Purpose:** Detect bots, sockpuppets, troll farms, or spam accounts.
-
-🔧 Techniques:
-- Profile pattern red flags  
-- Suspicious follower/following ratios  
-- Copy-paste content detection  
-- Engagement consistency audit
-
-🛠️ Tools:
-- Botometer  
-- BotSentinel  
-- **OSINT Industries**  
-- **ShadowDragon SocialNet**  
-- **Paliscope Suite**
-
----
-
-## 🧰 Tool Stack Summary
-
-| Category                | Tools |
-|-------------------------|-------|
-| **Network Graphing**    | Maltego, Gephi, Cytoscape, ShadowDragon, Paliscope YOSE |
-| **Profile Tracing**     | Maigret, Sherlock, WhatsMyName, Paliscope Build |
-| **Hashtag/Keyword Ops** | TweetDeck, Meltwater, Keyhole, OSINT Industries |
-| **Automation**          | n8n + LLM Agents, MCP Integrations |
-| **Media Forensics**     | EXIFTool, Forensically, TinEye, Paliscope YOSE |
-| **Premium Suites**      | ShadowDragon (SocialNet, Horizon, OIMonitor), OSINT Industries, Paliscope (Build, Explore) |
-
----
-
-> 🧠 Combine premium and open-source tools for full-spectrum social media intelligence. Automate what you can. Validate what you can’t.
+### Changelog (2025-08-10)
+- Added unified search workflow for all platforms.  
+- Expanded cross-platform pivot examples.  
+- Updated notes on 2025 login gating and anti-scraping trends.
