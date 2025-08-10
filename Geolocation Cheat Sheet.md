@@ -1,149 +1,105 @@
-# 🗺️ Geolocation Techniques for OSINT
-
-Geolocation in OSINT involves identifying physical locations of people, objects, or events by analyzing open data sources. It's essential in verification, intelligence, investigations, and situational awareness.
-
----
-
-## 📍 Geotagging Information
-
-**🎯 Purpose:** Extract embedded location data from digital files.
-
-🔧 Techniques:
-- EXIF data extraction from images  
-- Analyzing geotagged social posts  
-- Reverse image search with location filters  
-- Photo cluster mapping (e.g., Flickr Maps)
-
-🛠️ Tools: ExifTool, Google Images, Yandex, Flickr Maps
+# 🌍 Geolocation OSINT Cheat Sheet  
+_Last verified: 2025-08-10 • Scope: open-source collection only (no credentialed access). All methods must be conducted ethically, respecting local laws, privacy regulations, and platform ToS._
 
 ---
 
-## 🛰️ Usage of Satellite Imagery
-
-**🎯 Purpose:** Match imagery content to physical terrain.
-
-🔧 Techniques:
-- Visual terrain & structure comparison  
-- Using various map services (Google, Bing, HERE)  
-- Street View and crowd-sourced street imagery  
-- Overhead satellite views for verification
-
-🛠️ Tools: Google Earth, Sentinel Hub, Mapillary, Yandex Maps
+## 🎯 1) Purpose
+Geolocation is the art and science of identifying the exact location where a photo, video, or other media was taken, using open-source intelligence (OSINT) methods.  
+This sheet delivers a **battle-tested, investigator-grade** methodology combining tools, workflows, and fieldcraft to pinpoint locations with **speed, precision, and high confidence**.
 
 ---
 
-## 📱 Location-Based Services
-
-**🎯 Purpose:** Leverage GPS, Wi-Fi, or cellular data via user activity.
-
-🔧 Techniques:
-- Mobile app data leakage  
-- Analyzing check-in or visit history  
-- Bluetooth and proximity data  
-- Geolocation API usage (e.g., cell tower triangulation)
-
-🛠️ Tools: OpenCelliD, Google Maps Timeline, API sniffers, app telemetry tools
+## 🛰 2) Core Geolocation Workflow (The 4C Method)
+1. **Collect** — Gather all available imagery, metadata, and related contextual info.  
+2. **Clues** — Identify every visible marker: terrain, structures, signage, vehicles, vegetation, shadows, weather.  
+3. **Corroborate** — Cross-check findings with multiple map sources, timelines, and public data.  
+4. **Capture** — Document results with annotated evidence, coordinates, and confidence levels.
 
 ---
 
-## 📡 Sensor & Network-Based Clues
+## 🔍 3) Key OSINT Tools & Platforms
 
-**🎯 Purpose:** Analyze device signal interactions.
+### Mapping & Imagery
+- **Google Earth Pro / Google Maps** — Satellite, Street View, Historical Imagery slider.  
+- **Bing Maps** — Alternative angles, Bird’s Eye View in select cities.  
+- **Yandex Maps** — High-res imagery in many Eurasian locations.  
+- **Mapillary** — Crowdsourced street-level photos, often fresher than Street View.  
+- **OpenStreetMap (OSM)** — Editable, metadata-rich maps.  
+- **Wikimapia** — User-tagged landmarks with descriptions.  
+- **Sentinel Hub EO Browser** — Satellite imagery by date, spectral analysis.  
+- **Zoom Earth** — Real-time weather & satellite imagery.  
+- **Planet Labs (freemium)** — High-frequency satellite passes for time-sensitive verification.
 
-🔧 Techniques:
-- Wi-Fi and Bluetooth signal mapping  
-- Cellular network triangulation  
-- Matching SSID/BSSID via open databases
-
-🛠️ Tools: WiGLE.net, Kismet, Airodump-ng
-
----
-
-## 🖼️ Image & Video Analysis
-
-**🎯 Purpose:** Use visual elements to determine physical location.
-
-🔧 Techniques:
-- Landmark and terrain matching  
-- Language/signage interpretation  
-- Sun/shadow-based orientation  
-- Weather condition correlation  
-- EXIF metadata when available
-
-🛠️ Tools: Google Street View, SunCalc, Forensically, InVID
+### Reverse Image & Visual Search
+- **Google Lens** — Landmark recognition & visual matching.  
+- **Yandex Images** — Exceptional non-Latin and scenery matching.  
+- **Bing Visual Search** — Alternate dataset & match logic.  
+- **TinEye** — Historical reverse image search to detect earliest appearance.
 
 ---
 
-## 🌐 IP Geolocation
-
-**🎯 Purpose:** Approximate physical location via IP addresses.
-
-🔧 Techniques:
-- Public IP lookups  
-- Cross-referencing time zones and post times  
-- Historical IP resolution  
-- VPN/Tor detection
-
-🛠️ Tools: IPinfo.io, MaxMind, ViewDNS, SecurityTrails
+## 🕵️‍♂️ 4) Visual Clue Categories (The OSINT Investigator’s Checklist)
+- **Language & Script** — Street signs, shop names, advertisements, license plates.  
+- **Architecture** — Building shapes, roofing materials, window styles.  
+- **Natural Features** — Mountains, coastline, vegetation type, snow lines.  
+- **Infrastructure** — Road markings, guardrails, lamp posts, bus stops, traffic lights.  
+- **Vehicles** — License plate format, vehicle models common to regions.  
+- **Climate Indicators** — Clothing worn, vegetation health, seasonal elements.  
+- **Shadows & Light** — Use SunCalc.org to determine possible date/time.  
+- **Unique Objects** — Statues, billboards, public art, graffiti.
 
 ---
 
-## 🧲 Geofencing
-
-**🎯 Purpose:** Detect entry/exit from defined virtual zones.
-
-🔧 Techniques:
-- Monitoring geofenced content/posts  
-- SDK/ad behavior leakage  
-- Social media filters by location  
-- App event-based triggers
-
-🛠️ Tools: App telemetry analysis, social media search tools, reverse engineering frameworks
+## 🗺 5) Reverse Image Search Strategy
+1. Run **full image** through Google Lens/Yandex Images.  
+2. Crop to **distinctive areas** (e.g., building roofline, unique sign) for separate searches.  
+3. Compare returned images for consistent locations.  
+4. Investigate **EXIF metadata** (if available) for GPS coordinates (often stripped by social platforms).
 
 ---
 
-## 🗺️ Historical Map Overlays
-
-**🎯 Purpose:** Compare past and present terrain.
-
-🔧 Techniques:
-- Georeferencing vintage maps  
-- Using historical satellite/time-lapse tools  
-- Archival map overlays
-
-🛠️ Tools: Map Warper, QGIS, Google Earth Pro, David Rumsey Map Collection
+## 🌐 6) Cross-Platform Pivoting
+- Search hashtags & location tags on Instagram, TikTok, X (Twitter) for matching visuals.  
+- Monitor local news archives for event coverage matching background details.  
+- Explore Reddit city-specific threads (e.g., r/London, r/Dubai) for location-guessing discussions.
 
 ---
 
-## 📄 Document & Source Cross-Referencing
-
-**🎯 Purpose:** Validate location via open-source content correlation.
-
-🔧 Techniques:
-- Verifying claims via news/event reports  
-- Matching visuals to reported incidents  
-- Community-sourced location identification  
-- Multisource triangulation
-
-🛠️ Tools: Google Search, Local media, Reddit/OSINT subforums, news APIs
+## 📍 7) Stabilizing & Documenting Coordinates
+- Record **decimal coordinates** to 5+ decimal places (~1 meter precision).  
+- Always log **source platform, imagery date**, and **time zone** used.  
+- Annotate images with arrows, circles, and labels to highlight key visual matches.
 
 ---
 
-## 🧰 Stack Summary
-
-| Category                     | Tools                                                             |
-|------------------------------|-------------------------------------------------------------------|
-| Metadata & EXIF              | ExifTool, Forensically, InVID                                     |
-| Satellite & Map Imagery      | Google Earth, Sentinel Hub, Mapillary, Yandex                     |
-| Signal/SSID Mapping          | WiGLE.net, Kismet, OpenCelliD                                     |
-| App & LBS Data               | n8n + API sniffers, App telemetry platforms, SDK trackers         |
-| IP Geolocation               | IPinfo.io, MaxMind, ViewDNS, SecurityTrails                       |
-| Historical Overlays          | QGIS, Google Earth Pro, Map Warper, David Rumsey Map Collection   |
-| Crowdsource & Validation     | Reddit, Twitter, Local forums, News APIs                          |
+## ⚠️ 8) 2025 Environment & Cautions
+- Increasing use of **blurred zones** on Google Street View in sensitive areas.  
+- Some mapping services remove imagery in conflict zones—archive early.  
+- Seasonal changes may alter landscapes—use historical imagery to match conditions.  
+- Many regions now have **privacy-first** map policies—cross-check multiple sources.
 
 ---
 
-> 🧠 Combine visual forensics, metadata extraction, map overlays, and open-source triangulation for reliable location verification.
-```
+## 🛡 9) Rate Limits, Gating & Investigator Tips
+- Rotate between platforms to avoid IP-based rate limiting.  
+- Always **verify at least twice** with different map providers before publishing coordinates.  
+- Maintain an **offline reference library** of annotated map captures for high-risk or fast-disappearing content.
 
 ---
+
+## 🗂 10) Documentation Hygiene
+- **Minimum evidence package**:  
+  - Original media (or highest-quality copy)  
+  - Annotated comparison image (source vs. map)  
+  - Coordinates in decimal and DMS format  
+  - Platform/tool names and imagery dates  
+  - Confidence score (High/Med/Low)  
+- Store all findings in a structured repository for future cross-referencing.
+
+---
+
+### 📜 Changelog (2025-08-10)
+- Upgraded to **investigator-grade checklist** with expanded clue categories.  
+- Added **Planet Labs** and high-frequency imagery sources.  
+- Enhanced **reverse image search** strategy for partial and cropped searches.  
+- Updated environmental cautions for 2025 mapping landscape.
