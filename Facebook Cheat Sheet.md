@@ -1,108 +1,82 @@
-### 🚀 **Cheat Sheet: OSINT on Facebook** 🌐
+```markdown
+# Facebook OSINT Cheat Sheet
+_Last verified: 2025-08-10 • Scope: open-source collection only. Use ethically and comply with local law, privacy regulations, and Facebook’s ToS._
 
 ---
 
-## 🔍 **OSINT & SOCMINT Basics**
-
-- 🗂️ **OSINT (Open-Source Intelligence):** Publicly accessible data collection and analysis.
-- 📱 **SOCMINT (Social Media Intelligence):** OSINT specific to social media platforms, crucial for profiling and network mapping.
+## 🎯 1) Purpose
+A practical guide for collecting and analysing publicly available data from Facebook for investigations, research, and situational awareness.
 
 ---
 
-## 📌 **Essential Facebook OSINT Techniques**
+## 🛠 2) Core Collection Methods
 
-### 🧩 **Profile & Public Information Extraction:**
-- 📸 Profile photos, cover images, usernames
-- 🎓 Work/Education details, relationship status
-- 👥 Public friend lists, groups, and memberships
-- 📍 GeoINT: Tagged locations, check-ins, events
+### Facebook Native Search & Filters
+- Search by **name, keyword, phone number, or email** (if public).
+- Use filters for **People, Pages, Groups, Events, Posts**.
+- Filter by **location**, **date posted**, and **content type** (photo, video, link).
 
-**🔎 Quick Actions:**
-- 🌐 Direct Facebook search (name/location)
-- 🌍 Google Dorking:
-  ```
-  site:facebook.com "[username/email/phone/name]"
-  facebook.com/search/str/[query]/keywords_users
-  ```
+### Profile & Page Review
+- **About Section**: Bio, work/education, contact info, location, websites.
+- **Timeline**: Public posts, check-ins, likes, shares, comments.
+- **Photos/Videos**: Uploaded or tagged media — check for location clues and EXIF metadata.
+- **Friends/Followers**: Public connections; note mutual friends and overlapping networks.
 
-### 📞 **Phone Numbers:**
-- 🛒 Marketplace listings (direct phone numbers)
-- 📇 Business Pages ('About' section)
-- 🔍 Google Dorking:
-  ```
-  site:facebook.com "contact me" [area code or partial number]
-  ```
-- 🔄 Reverse lookup (e.g., Maltego)
-
-### 📧 **Email Addresses:**
-- 📌 'About' section on business/profiles
-- 📢 Group posts and discussions
-- ♻️ Reverse email lookup (OSINT platforms like OSINT Industries)
+### Groups & Events
+- Join open groups to view posts, member lists, and shared media.
+- Monitor event pages for participant lists, photos, and organiser info.
+- Search for past events for timeline building.
 
 ---
 
-## 🛒 **Leveraging Facebook Marketplace**
-
-### 👤 **User Intel:**
-- 🔗 Names, pictures, direct profile links
-- 📅 Listing activity, joining dates
-- 📍 GeoINT from explicit listings/check-ins
-
-### 📊 **Behavioral Analysis:**
-- 📦 Items sold indicate interests, lifestyle, finances
-- 💲 Pricing strategies reveal urgency/economic state
-- 🗣️ Communication style (language, response, negotiation)
-
-### 🔧 **Technical Analysis:**
-- 🖼️ EXIF data from images
-- 🌐 Marketplace URL:
-  ```
-  facebook.com/marketplace/profile/[USERID]
-  ```
-- 🔖 Unique IDs to track listings
+## 🔍 3) Key OSINT Targets
+- **User ID / Vanity URL** — Can be used to pull archives or cached content.
+- **Profile & Cover Photos** — Reverse image search for cross-platform matches.
+- **Check-ins** — Locations and travel patterns.
+- **Shared Links** — External domains for further investigation.
+- **Comments & Reactions** — Identify associates and engagement patterns.
+- **Hashtags** — Trace communities, events, and related content.
 
 ---
 
-## 🔐 **Advanced OSINT Tips:**
-- 📈 **Engagement Analysis:** Track interactions to map relationships.
-- 🎯 **Events & Groups:** Reveal affiliations and networks.
+## 🧩 4) Pivoting Opportunities
+- Use **reverse image search** (Google, Bing, Yandex) on profile/cover photos.
+- Extract domains from shared links and run WHOIS/DNS lookups.
+- Cross-reference usernames, names, and emails with other social platforms.
+- Follow hashtags across platforms to find parallel content.
 
 ---
 
-## ⚖️ **Ethical & Legal Guidelines:**
-- ✅ Public sources only
-- 📜 Respect GDPR, CCPA
-- 🚫 Avoid unauthorized access, hacking, phishing
+## 📌 5) Preservation & Archiving
+- **Screenshots**: Include URL bar and timestamp.
+- **Web Archives**: Use Wayback Machine and Archive.today for posts/profiles.
+- **Media Hashes**: Compute SHA-256 for downloaded photos/videos.
+- **JSON Exports**: From Facebook’s data download tool (if account owner consent is given).
 
 ---
 
-## 🛠️ **Quick Reference: Top Tools**
-- 🌍 **Google Dorking:** Rapid public data discovery
-- 🔄 **Maltego:** Relationship analysis
-- 🌐 **OSINT Industries:** Comprehensive cross-platform data searches
-- 🐉 **Shadowdragon:** Cross Platform Data Search & Visualization
+## ⚠️ 6) 2025 Limitations & Considerations
+- Facebook’s search capabilities have been reduced — third-party tools may help, but respect ToS.
+- Privacy settings and deletion can make content volatile — archive early.
+- Avoid methods that bypass security or access controls.
 
 ---
 
-## 🔗 **Facebook URL Shortcuts:**
-- 🔍 User search:
-  ```
-  facebook.com/search/str/[query]/keywords_users
-  ```
-- 🛍️ Marketplace Profile:
-  ```
-  facebook.com/marketplace/profile/[USERID]
-  ```
-- 📷 Tagged Photos:
-  ```
-  facebook.com/[username]/photos_of
-  ```
-- 🌍 Check-ins:
-  ```
-  facebook.com/[username]/map
-  ```
+## 🛡 7) Investigator Tips
+- Always verify the account authenticity — look for creation date, posting history, and network ties.
+- Use **aliases** and separate browser profiles to avoid bias in personalised search results.
+- Correlate Facebook data with other open sources for stronger conclusions.
 
 ---
 
-🎯 **Ready to level up your Facebook OSINT? Start digging! 🚀**
+## 🗂 8) Documentation Hygiene
+- Record: Profile URL, username, date of capture, tools used, and archive locations.
+- Maintain clear linkage between raw evidence (screenshots, downloads) and your analysis.
 
+---
+
+### 📜 Changelog (2025-08-10)
+- Updated for current Facebook search restrictions.
+- Added expanded pivoting section.
+- Emphasised early archiving and authenticity checks.
+```
