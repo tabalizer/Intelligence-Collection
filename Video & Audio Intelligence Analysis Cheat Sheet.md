@@ -1,170 +1,109 @@
-# 🎧🎥 OSINT Cheat Sheet – Video & Audio Intelligence Analysis
-
-**Purpose:** Extract truth from video, audio, and voice content on platforms like Telegram, TikTok, YouTube, Podcasts, and Live Streams using OSINT-grade workflows and AI-enhanced tools.
-
----
-
-## 1. 🗂️ Metadata Extraction
-
-**Objective:** Identify original source info, GPS coordinates, device types, creation/modification times.
-
-**How-To:**
-- Use tools to extract embedded EXIF/XMP/MP4 metadata from original files.
-- Look for GPS tags, camera info, software footprints, and creation times.
-- Always compare against visible content and claimed upload date.
-
-**Tools:** ExifTool, MediaInfo, FOCA
+# Video & Audio Intelligence Analysis OSINT Cheat Sheet
+_Last verified: 2025-08-10 • Scope: open-source collection only (no credentialed access). For lawful OSINT and investigative use only._
 
 ---
 
-## 2. 📝 Audio Transcription & Translation
-
-**Objective:** Convert speech to searchable text. Enable language pivoting and keyword indexing.
-
-**How-To:**
-- Transcribe with Whisper (local) or Otter.ai (cloud).
-- Translate using DeepL or GPT-based LLMs for nuanced language.
-- Use LLMs (like ChatGPT) to summarize or highlight key phrases.
-
-**Tools:** Whisper, Otter.ai, Google STT, DeepL, GPT-4
+## 🎯 1) Purpose
+To extract, analyze, and interpret intelligence from video and audio sources using lawful, open-source techniques — revealing location, time, context, and authenticity indicators while preserving evidentiary integrity.
 
 ---
 
-## 3. 🌍 Video Geolocation via Scene & Environment
-
-**Objective:** Determine where the footage was recorded using visual and environmental cues.
-
-**How-To:**
-- Extract keyframes with InVID.
-- Match visual details using Google Earth, Maps, Mapillary, and SunCalc.
-- Analyze natural lighting for time-of-day estimation.
-
-**Tools:** InVID, Google Earth, SunCalc, Mapillary
+## 🎬 2) Core Video Analysis Workflow (The 5E Method)
+1. **Extract** — Obtain highest-quality, original source files whenever possible.  
+2. **Examine** — Conduct frame-by-frame review for visible and audible clues.  
+3. **Enhance** — Apply tools to clarify obscured or distorted details (lawfully).  
+4. **Enrich** — Cross-reference findings with external datasets and OSINT platforms.  
+5. **Evaluate** — Assign confidence level and assess relevance before reporting.
 
 ---
 
-## 4. 🗣️ Voice Recognition & Speaker Verification
+## 🛠 3) Tool Arsenal
 
-**Objective:** Confirm identity or link voices across media.
+### Metadata & File Intelligence
+- **ExifTool** — Extract embedded metadata from video/audio files.  
+- **MediaInfo** — Detailed codec, bitrate, resolution, and timestamp data.  
+- **FFmpeg** — Extract frames, convert formats, analyze streams, isolate tracks.  
+- **Ghiro** — Automated image metadata & hash analysis (for stills from video).  
+- **DROID (UK National Archives)** — File format identification.
 
-**How-To:**
-- Create voice embeddings with Resemblyzer.
-- Compare voice samples or run voiceprint analysis.
-- Use AI to flag synthetic/deepfake speech anomalies.
+### Video Analysis & Enhancement
+- **InVID & WeVerify** — Keyframe extraction, reverse image search integration, video forensics toolkit.  
+- **VLC Media Player** — Frame-by-frame review and basic snapshot export.  
+- **Kinovea** — Motion analysis and object tracking.  
+- **Amped FIVE** (commercial) — Professional forensic video enhancement.  
+- **DaVinci Resolve** (free/pro) — Color grading, sharpening, and frame stabilization.  
+- **Matroska tools** — Inspect MKV container metadata.
 
-**Tools:** Resemblyzer, Batvox, i2 Voice Biometrics
+### Audio Analysis
+- **Audacity** — Waveform and spectral analysis, noise isolation.  
+- **Sonic Visualiser** — Frequency domain visualization for background noise identification.  
+- **Praat** — Phonetic analysis and voice pattern profiling.  
+- **Ocenaudio** — Quick-edit audio inspection.  
+- **Spek** — Spectrogram viewer for format and compression artifacts.
 
----
-
-## 5. 🔉 Ambient Sound & Environmental Audio
-
-**Objective:** Extract context from background audio (location, time, local culture).
-
-**How-To:**
-- Use spectrograms to identify birds, prayer calls, traffic, accents.
-- Cross-reference ambient cues with known locations or regional audio libraries.
-
-**Tools:** Audacity, iZotope RX, OpenSMILE, Shazam API
-
----
-
-## 6. 🧠 Pattern, Symbol & Object Detection
-
-**Objective:** Identify recurring visual elements (logos, faces, gear, flags).
-
-**How-To:**
-- Run object detection models on video frames (YOLO, OpenCV).
-- Use facial recognition tools to track individuals.
-- Detect edited/reused footage via visual anomalies.
-
-**Tools:** YOLOv8, OpenCV, DeepFace, TensorFlow
+### Integrated OSINT & Verification
+- **SunCalc.org** — Sun position & shadow analysis for time-of-day estimation.  
+- **Timeanddate.com / Meteostat.net** — Historical weather matching to visual/audio clues.  
+- **Google Lens / Yandex Images / Bing Visual Search** — Reverse search extracted stills.  
+- **YouTube DataViewer** — Extract upload timestamps and thumbnails from YouTube videos.  
+- **Amnesty International YouTube Dataviewer** — Cross-check YouTube content metadata.  
+- **WatchFrameByFrame.com** — Online frame-by-frame YouTube analysis.
 
 ---
 
-## 7. 💬 Sentiment & Intent Analysis
-
-**Objective:** Assess tone, stress, and emotional charge in speech.
-
-**How-To:**
-- Run transcripts through LLMs to summarize, classify tone, or detect threat rhetoric.
-- Use acoustic tools to detect stress, aggression, deception.
-
-**Tools:** VADER, TextBlob, OpenSMILE, GPT-4
+## 🔍 4) Visual Clue Categories
+- **Environmental** — Weather, lighting, shadows, vegetation.  
+- **Architecture** — Building styles, signage, street layouts.  
+- **Objects** — Vehicles, uniforms, tools, weapons.  
+- **Screens & Displays** — Digital readouts, clocks, in-scene devices.  
+- **People** — Clothing, tattoos, gait, speech.  
+- **Text** — Banners, posters, shopfronts, graffiti.
 
 ---
 
-## 8. 🧑‍💻 Feature Extraction (Face, Voice, Symbols)
-
-**Objective:** Isolate faces, insignia, gestures, voice markers for entity mapping.
-
-**How-To:**
-- Segment and tag faces or emblems.
-- Build pattern-of-life from recurring features across videos.
-
-**Tools:** Face++, DeepFace, YOLOv8, Maltego CE
+## 🎧 5) Audio Clue Categories
+- **Voices & Accents** — Language, dialect, speech patterns.  
+- **Background Noise** — Traffic, nature, machinery, music.  
+- **Echo & Acoustics** — Indoor vs. outdoor, spatial characteristics.  
+- **Electronic Signals** — Device notifications, alarms, system prompts.
 
 ---
 
-## 9. ⏱️ Timestamp & Temporal Verification
-
-**Objective:** Detect fakes by validating claimed time vs. visual/audio evidence.
-
-**How-To:**
-- Extract internal timestamps using FFmpeg.
-- Compare lighting, weather, broadcast overlays, or live event markers.
-
-**Tools:** FFmpeg, InVID, SunCalc
+## 🗺 6) Cross-Platform Pivoting
+- Reverse search video stills via **Google Lens**, **Yandex**, **Bing**.  
+- Search transcribed dialogue keywords in local news archives.  
+- Compare environmental sound cues to field recordings in open audio archives.
 
 ---
 
-## 10. 📈 Cross-Platform Correlation
-
-**Objective:** Link identities, voices, and visuals across platforms.
-
-**How-To:**
-- Pivot from voice to face, face to username, username to location.
-- Use graphing tools to visualize relationships and timelines.
-
-**Tools:** Maltego, SpiderFoot, CaseFile, Neo4j
+## 📍 7) Timeline & Sequence Analysis
+- Use metadata + sun/shadow data to estimate filming time.  
+- Match weather patterns to historical meteorological records.  
+- Sequence multiple videos by cross-referencing scene elements and timestamps.
 
 ---
 
-## ⚖️ Legal & Ethical Guidelines
-
-- ✅ Use only publicly available or user-consented media.
-- ❌ Do not access private, encrypted, or protected data without legal authority.
-- ⚖️ Follow GDPR, CCPA, and local data laws.
-- 🧭 Maintain investigative integrity and clear OSINT purpose.
+## ⚠️ 8) 2025 Threat Landscape & Cautions
+- AI-generated video/audio (“deepfakes”) now highly realistic — verify with multiple forensic tools.  
+- Social platforms strip most metadata — request or seek original files when possible.  
+- Short-form platforms (TikTok, Instagram Reels) heavily compress content — may mask details.
 
 ---
 
-## 📚 Tools & Resources Reference
+## 🛡 9) Investigator Tips
+- Always keep an untouched copy of the original media file.  
+- Perform **multiple tool cross-checks** — no single tool is infallible.  
+- Archive both original and annotated findings for reproducibility.
 
-| Tool                | Purpose                                   | Link |
-|---------------------|-------------------------------------------|------|
-| ExifTool            | Metadata extraction                       | https://exiftool.org |
-| MediaInfo           | Media stream analysis                     | https://mediaarea.net/en/MediaInfo |
-| FOCA                | Office/PDF metadata extraction            | https://github.com/ElevenPaths/FOCA |
-| Whisper             | Offline speech-to-text                    | https://github.com/openai/whisper |
-| Otter.ai            | Cloud transcription w/ speaker ID         | https://otter.ai |
-| Google STT          | Cloud-based speech-to-text                | https://cloud.google.com/speech-to-text |
-| DeepL API           | High-accuracy translation                 | https://www.deepl.com/docs-api |
-| InVID Plugin        | Keyframe extraction, reverse search       | https://www.invid-project.eu |
-| Google Earth        | Satellite image geolocation               | https://www.google.com/earth |
-| SunCalc             | Sun position and lighting calculator      | https://www.suncalc.org |
-| Resemblyzer         | Speaker embedding & comparison            | https://github.com/resemble-ai/Resemblyzer |
-| Batvox              | Voice biometrics analysis                 | https://falcon-analytical.com |
-| Audacity            | Audio editing & spectrum view             | https://www.audacityteam.org |
-| iZotope RX          | Professional audio forensics              | https://www.izotope.com/en/products/repair-and-edit/rx.html |
-| YOLOv8              | Object detection (real-time)              | https://github.com/ultralytics/ultralytics |
-| OpenCV              | Vision pattern recognition                | https://opencv.org |
-| DeepFace            | Facial recognition                        | https://github.com/serengil/deepface |
-| TensorFlow          | AI/ML model building                      | https://www.tensorflow.org |
-| Face++              | Face attribute API                        | https://www.faceplusplus.com |
-| VADER               | Sentiment analysis                        | https://github.com/cjhutto/vaderSentiment |
-| OpenSMILE           | Acoustic feature extraction               | https://audeering.com/technology/opensmile |
-| FFmpeg              | Frame & metadata extraction               | https://ffmpeg.org |
-| Maltego             | Relationship mapping                      | https://www.paterva.com |
-| CaseFile            | Offline link analysis                     | https://www.maltego.com/casefile |
-| SpiderFoot          | Passive recon and automation              | https://www.spiderfoot.net |
-| GPT-4 (ChatGPT Pro) | Summarization, sentiment, pivot reasoning | https://chat.openai.com |
+---
+
+## 🗂 10) Documentation Hygiene
+- Store: original file, extracted stills, audio samples, transcripts, coordinates, tool outputs, and confidence ratings.  
+- Maintain **chain of custody** for any evidentiary use.
+
+---
+
+### 📜 Changelog (2025-08-10)
+- Added full **OSINT tool arsenal** with metadata, visual, and audio analysis utilities.  
+- Included **deepfake detection** consideration in 2025 context.  
+- Expanded integrated verification methods across time, weather, and geolocation.
