@@ -1,210 +1,94 @@
-# 🛡️ Reverse Phone Lookup OSINT Cheat Sheet
-
-> **Empower your defenses. Outsmart phone fraud. Use Open-Source Intelligence (OSINT) to unmask unknown callers and block scams before they begin.**
-
----
-
-## 🔍 What is Reverse Phone Lookup?
-
-**Reverse Phone Lookup** uses a phone number to uncover details about the caller, including:
-- 👤 Name  
-- 🏠 Address  
-- 🏢 Company or workplace  
-- 🌐 Social media accounts  
-- 💬 Public mentions  
-
-Unlike Caller ID (which can be spoofed), this technique **cross-references billions of data points** for high-confidence identification.
+# Reverse Phone Lookup OSINT Cheat Sheet
+_Last verified: 2025-08-10 • Scope: open-source collection only (no credentialed access). All activities must comply with local laws, privacy regulations, and platform ToS._
 
 ---
 
-## 🧰 Core Data Sources
-
-| 🔗 Source Type         | 📌 Example Content                                      |
-|------------------------|--------------------------------------------------------|
-| 🏛️ Public Records      | Voter rolls, property ownership, business licenses     |
-| 🗂️ Business Directories | Company staff lists, contact info                     |
-| 📱 Social Media         | Public profiles, comments, shared posts               |
-| 📞 Telecom Databases    | Carrier info, VOIP flags                              |
-| 🚨 Scam Reports         | FTC lists, community complaints, blacklists           |
+## 🎯 1) Purpose
+To investigate phone numbers using lawful OSINT methods — identifying owners, linked accounts, and related infrastructure while cross-referencing public and historical data.
 
 ---
 
-## ⚙️ How to Perform a Reverse Phone Lookup
+## 🛠 2) Core Tool Arsenal
 
-### 🥇 1. **Start with Google Dorking**
+### General Reverse Lookup
+- **Truecaller.com** — Caller ID and spam report database (free/paid).  
+- **Sync.me** — Caller ID, spam flagging (mobile app).  
+- **NumLookup.com** — Free reverse phone search (US-focused).  
+- **WhoCallsMe.com** — Community-reported spam/scam numbers.  
+- **Whoscall** — Caller ID and blocking app.  
 
-Use advanced search operators to scan for the number across public platforms:
+### Global & Regional Directories
+- **Whitepages.com** — Reverse phone lookup (US & CA).  
+- **411.com** — North American directory.  
+- **Canada411.ca** — Canada-specific directory.  
+- **Infobel.com** — Global business & residential listings.  
+- **TruePeopleSearch.com** — US-focused with linked addresses.  
 
-```plaintext
-"123-456-7890"
-"123-456-7890" site:facebook.com
-"123-456-7890" filetype:pdf OR filetype:xls
-"123-456-7890" -spam -scam
-```
+### Social Media & Cross-Platform
+- **Facebook Search** — Try direct phone number in search bar.  
+- **Telegram Contact Import** — To check if number is linked to an account.  
+- **Signal/WhatsApp** — Profile names and photos can be revealed upon adding number (with caution).  
 
-🔎 Works with: Google, DuckDuckGo, Bing, Yandex, Baidu
-
----
-
-### 🛠️ 2. **Use OSINT Tools**
-
-| 🧪 Tool                | ✅ What It Does                                   |
-|------------------------|--------------------------------------------------|
-| 🔎 **Truecaller**       | Global ID + spam flagging                        |
-| 🧠 **OSINT Industries** | 70+ lookup modules (emails, names, socials)      |
-| 🕸️ **Maltego**          | Visualizes networks, links phones to entities    |
-| 🔍 **Sync.me / Whitepages / NumLookup** | Free identity checks       |
-| 🧪 **BeenVerified / Intelius** | Paid deep reports (U.S. focused)         |
-
----
-
-### 💬 3. **SOCMINT – Social Media Intelligence**
-
-Check social platforms directly:
-
-- 🔍 Facebook / LinkedIn / X (Twitter) / Instagram  
-- 📲 WhatsApp / Telegram: Save contact & check profile info
-
-```plaintext
-"123-456-7890" site:linkedin.com
-```
+### OSINT Meta Search & Enrichment
+- **OSINT Industries Phone Lookup** — Multi-source number intelligence.  
+- **IntelX.io** — Searches leaks, breaches, and indexed datasets.  
+- **HaveIBeenPwned.com** — Check if number appears in known breach datasets.  
 
 ---
 
-### 📂 4. **Cross-reference Public Records**
-
-Search free or subscription databases:
-- 🏘️ Property ownership
-- 🏢 Business filings
-- ⚖️ Court documents
-
----
-
-## 🚩 Red Flags to Watch For
-
-| ⚠️ Suspicious Pattern         | 📉 Implication                                  |
-|------------------------------|-------------------------------------------------|
-| 🔁 Burner numbers / no history | Disposable scam lines                          |
-| 🎭 Caller ID mismatch         | Spoofed identity                               |
-| 🌍 Foreign call origin        | Impersonation of local institutions            |
-| 💬 Overuse of urgency         | Social engineering attempt                     |
+## 🔍 3) Investigation Workflow
+1. **Identify** — Confirm full international format (E.164 standard, e.g., +1 555-123-4567).  
+2. **Search Directories** — Start with general and country-specific phone directories.  
+3. **Cross-Reference** — Check messaging apps, social media, and breach databases.  
+4. **Corroborate** — Match any names, photos, or addresses with independent sources.  
+5. **Capture** — Save URLs, screenshots, and notes.
 
 ---
 
-## 👤 Who Should Use This?
-
-### 1. **📱 Individuals**
-
-Protect from:
-
-#### 🧑‍⚖️ IRS / Bank Phishing Scams
-> **Important:** This refers to **fraudsters impersonating** the IRS or banks—**not** legitimate government officials or financial institutions.
-
-Scammers may:
-- Claim you're under legal threat
-- Demand immediate payment via crypto or gift cards
-- Use spoofed caller ID to fake legitimacy
-
-🔐 **OSINT lookup helps verify before you respond.**
-
-#### 💻 Tech Support Scams
-- "Apple", "Microsoft", or "Amazon" call claiming your device has an issue
-- Ask for remote access or payments for fake services
-
-#### 💔 Romance Scams
-- Impersonate doctors, military personnel, or expats
-- Build trust, then request money for emergencies
-
-#### 🐷 Pig Butchering (Crypto Scams)
-- Long-term deception blending romance and fake investments
-- Scammers guide victims to fake crypto platforms, drain funds
-
-**Tips**:
-- Cross-check unknown callers before replying  
-- Save flagged numbers to blocklist apps  
-- Report confirmed scams to the FTC or your cybercrime unit  
+## 🧩 4) Pivoting Opportunities
+- Search the number in Google/Bing/Yandex with quotes: `"+15551234567"`.  
+- Check marketplace listings, resumes, or forum posts using the number.  
+- Reverse image search any profile photos found linked to the number.
 
 ---
 
-### 2. **🏢 Businesses**
-
-Protect against:
-
-#### 💰 Fake Invoice Scams
-- Impersonate vendors requesting urgent payments to fake accounts
-
-#### 👨‍💼 CEO Fraud (Whaling)
-- Spoofed executive numbers with urgent money transfer requests
-
-#### 🧠 Social Engineering
-- Use public info (LinkedIn, press releases) to impersonate clients or execs
-
-**Best Practices**:
-- 📵 Always verify vendor contact before processing payments  
-- 🧩 Integrate phone verification in CRM workflows  
-- 🔔 Trigger alerts for unknown or mismatched numbers  
+## 📌 5) Key Clues from Phone Data
+- **Name** — Often from caller ID apps or linked accounts.  
+- **Location** — Area code, exchange prefix (but beware of mobile portability).  
+- **Service Type** — Mobile, VoIP, landline.  
+- **Carrier** — Sometimes reveals business or organization usage.  
+- **Linked Accounts** — Social profiles, marketplaces, messaging apps.
 
 ---
 
-### 3. **👮 Law Enforcement**
-
-Support investigations by:
-
-- 📞 Mapping phone fraud infrastructure  
-- 🌐 Tracing VOIP/SIP providers and call gateways  
-- 🔁 Correlating recycled numbers across scam types  
-- 🧬 Visualizing fraud networks with tools like Maltego
-
-**Use for:**
-- ⚖️ Chain-of-custody for reverse lookup evidence  
-- 🔗 Linking scams using shared infrastructure  
-- 🕵️ Pattern analysis on scam call timing & frequency  
+## 🌐 6) Cross-Platform Verification
+- Match names & addresses from multiple directories.  
+- Compare photos from messaging apps to social media profiles.  
+- Verify business numbers via official company websites.
 
 ---
 
-## 🧠 Advanced Techniques
-
-| 🧩 Technique               | 🛠️ Tool or Method                        |
-|----------------------------|------------------------------------------|
-| 📈 **Temporal Pattern Mapping** | Time-based call clustering to spot scams |
-| 🌍 **GeoINT on Call Origin**    | Lookup # country vs claimed ID          |
-| 🔐 **SIM Swap Check**          | Monitor breach forums & swap indicators |
-| 🧬 **Graph Network Analysis**  | Maltego, OSINT Industries Palette       |
-| 🧾 **Public Breach Databases** | Check leaked databases for connections  |
+## ⚠️ 7) 2025 Environment & Cautions
+- Many caller ID services now require mobile app installation.  
+- VoIP services can easily spoof caller IDs — treat initial matches cautiously.  
+- Privacy laws in some regions restrict reverse lookup availability.
 
 ---
 
-## 🔐 Safety Tips
-
-- ✅ Save reverse lookup results for future reference  
-- 🛡️ Never engage unless you've verified the number  
-- 🔁 Share confirmed scam numbers with your community  
-- 🚫 Register your number with **Do Not Call lists**:
-  - [FTC DNC](https://www.donotcall.gov/)
-  - [Spamhaus DBL](https://www.spamhaus.org/)
+## 🛡 8) Investigator Tips
+- Always confirm matches via at least two unrelated sources.  
+- Keep a log of failed lookups — it can indicate number spoofing or disposable use.  
+- Consider time zone when contacting or investigating live leads.
 
 ---
 
-## 📦 Resources
-
-- 🔗 [Shadowdragon](https://www.shadowdragon.io/)
-- 🔗 [Truecaller](https://www.truecaller.com/)
-- 🔗 [OSINT Industries](https://www.osint.industries/)
-- 🔗 [Maltego](https://www.maltego.com/)
-- 🔗 [BeenVerified](https://www.beenverified.com/)
-- 📘 [FTC Scam Alerts](https://www.consumer.ftc.gov/features/scam-alerts)
+## 🗂 9) Documentation Hygiene
+- Record: full number in E.164 format, capture date (UTC), sources checked, matches found, and confidence rating.  
+- Archive any related profile photos or linked account screenshots.
 
 ---
 
-## ✅ Summary
-
-> Reverse phone lookup is **not just a tool** — it's a **first line of defense** in the fight against phone fraud.
-
-- 🕵️ Investigate unknown numbers  
-- 🚫 Stop phishing and impersonation  
-- 🧠 Protect individuals, businesses & investigators  
-- 🧰 Use OSINT methods & tools proactively
-
----
-
-📌 **Stay smart. Stay safe. Verify before you reply.**
+### 📜 Changelog (2025-08-10)
+- Added global & region-specific lookup services.  
+- Updated cross-platform checks for 2025 messaging apps.  
+- Included VoIP spoofing cautionary note.
