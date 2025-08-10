@@ -1,162 +1,90 @@
-# 🔍 Advanced Search Techniques for OSINT
+# Advanced Search Cheat Sheet
+_Last verified: 2025-08-10 • Scope: open-source collection only. Use ethically and comply with local law & platform ToS._
 
-Advanced search techniques are essential for navigating the web like an intelligence professional. They allow you to extract buried data, surface deleted content, and pinpoint sources others overlook. This cheat sheet breaks down the most powerful techniques with **realistic**, **practitioner-level examples** — no fluff.
+## 1) Purpose
+A practical, engine-agnostic reference for constructing precise web searches across Google, Bing, and Yandex to surface hard-to-find OSINT signals quickly.
 
-## 🔢 Boolean Operators
+## 2) Core Workflow (FIND)
+1) **Frame** the question → define entities (who/what/where/when).  
+2) **Intent** → decide whether you need people, docs, media, code, or news.  
+3) **Narrow** → add site:, filetype:, date range, language/region.  
+4) **Double-check** → run variants across multiple engines and compare top 20 results.
 
-**What it is:**  
-Boolean operators control how keywords interact in a search. They help you combine, exclude, or prioritize terms to filter the signal from the noise.
+## 3) High-signal operators (cross-engine)
+- `site:domain.tld` — restrict results to a site or TLD (`site:*.gov`, `site:co.uk`).  
+- `"exact phrase"` — force literal match; combine with site: for bios/quotes.  
+- `-term` — exclude noisy terms (`-job -hiring -template`).  
+- `OR` — broaden with synonyms (`"resume" OR "cv"`).  
+- `filetype:pdf` / `ext:pdf` — documents; try `ppt`, `pptx`, `xls`, `xlsx`, `doc`, `docx`, `csv`, `txt`.  
+- `intitle:` — target page titles; stack with keywords.  
+- `inurl:` — target URL path/params (good for `admin`, `profile`, `view` patterns).
 
-**Core operators:**
-- `AND`: Results must include both terms  
-- `OR`: Results can include either term  
-- `NOT` or `-`: Excludes results with a term  
-- `""`: Exact phrase  
-- `()`: Groups terms for structured logic
+> Tip: Chain operators: `site:example.com (policy OR guideline) filetype:pdf "2024"`
 
-**Real OSINT Examples:**
-- `"equipment manifest" AND ("UK MOD" OR "Ministry of Defence")`  
-- `(telegram OR signal) AND "user ID"`  
-- `"flight plan" AND NOT "training exercise"`  
-- `"police incident report" AND "Milwaukee" AND "August 2023"`
+## 4) Google specifics
+- **Date filter:** Tools → Time → Past 24h/Week/Month/Custom (YYYY-MM-DD).  
+- **Numeric range:** `2019..2025` (useful for reports/versions).  
+- **Cache view:** `cache:example.com/page` (snapshot may be stale).  
+- **Verbatim mode:** Settings → **All results → Verbatim** to reduce synonyms/autocorrect.  
+- **Region/language:** `&lr=lang_en` or search settings → Language/Region to de-bias local results.
 
-✅ **Why it works:** Useful in breach investigations, insider threat detection, and cross-referencing leaks with local context.
+## 5) Bing specifics
+- Accepts most Google-style operators; differences:  
+  - `contains:` surfaces pages linking to specific filetypes.  
+  - Strong image/video verticals; use **Filters → Date/Resolution** quickly.  
+  - Often less aggressive personalization—useful for “second look” on the same query.
 
----
+## 6) Yandex specifics
+- Strong for Cyrillic/non-Latin and visual similarity; try the same dorks in Russian.  
+- Good geographic biasing by selecting Interface Language + Region in settings.  
+- Reverse image search can return matches Google misses.
 
-## 🌐 Site-Specific Searches
+## 7) Personas & de-biasing
+- Use clean browser profiles (no history/cookies) and switch **language/region**.  
+- Compare logged-out vs logged-in results (when policy allows) to surface hidden items.  
+- Try synonyms in target language(s): e.g., `"press release" OR "communiqué" OR "pressemelding"`.
 
-**What it is:**  
-Tells a search engine to look **only** within a specific website or domain.
+## 8) People & org discovery patterns
+- People: `site:linkedin.com/in "Title" "Company"`, `site:twitter.com "@handle"`, `"Full Name" "city"`.  
+- Orgs: `site:{company.tld} (orgchart OR team OR "leadership")`, `"@company.tld" email`.  
+- Docs: `site:{domain} filetype:(pdf OR pptx OR xlsx) (budget OR roadmap OR policy)`.
 
-**Syntax:** `site:domain.com search terms`
+## 9) Technical & code intel
+- GitHub: `site:github.com "{company}" (token OR api_key OR password) -fork`, `inurl:.env "SECRET="`.  
+- Cloud buckets: `"index of" backup site:storage.googleapis.com` (be lawful; do not access non-public data).  
+- Device footprints: combine with Shodan/Censys results (see Domain & IP sheet).
 
-**Real OSINT Examples:**
-- `site:facebook.com "lives in Tripoli" "works at airport"` — useful for geo-linked human targeting  
-- `site:pastebin.com "database dump" AND "gov.bd"` — finding exposed Bangladeshi government data  
-- `site:sec.gov "cyber incident disclosure"` — regulatory breach confirmations  
-- `site:weibo.com AND "Huawei employee"` — sourcing profiles from Chinese-language platforms
+## 10) Media & local evidence
+- Events: `"event program" filetype:pdf "City" 2024..2025`.  
+- Local news/blogs: `site:*.localnews.tld "keyword"`, add language terms.  
+- Images: Use engine’s **Tools → Size** (large) and date filters for investigative timelining.
 
-✅ **Why it works:** Ideal for platform-specific searches, breach tracking, and identifying sensitive info buried in niche sources.
+## 11) Date & freshness tactics
+- Always re-run promising dorks with **custom date ranges** to see evolution.  
+- For breaking topics: add `after:2025-07-01` (Bing supports `after:`/`before:`), or Google custom dates.  
+- Use quotes + month names to pin time (`"March 2025" "Project X"`).
 
----
+## 12) Noise control
+- Exclusions: `-site:pinterest.* -site:facebook.com -site:youtube.com` when they swamp results.  
+- Template suppression: add `-template -sample -placeholder`.  
+- Job spam: `-jobs -careers -hiring`.
 
-## 📄 File Type Searches
+## 13) Internationalization
+- Translate the query nouns/verbs; run in target languages.  
+- Swap locale numerals/units (e.g., `km` vs `miles`, comma vs dot decimals).
 
-**What it is:**  
-Searches for specific document types like PDFs, Excel files, PowerPoints, etc.
+## 14) Documentation hygiene
+- Log **query string**, **engine**, **time**, **filters**, and **top results**.  
+- Capture screenshots or export SERPs to PDF for reproducibility.  
+- Note **language/region settings** used for each run.
 
-**Syntax:** `filetype:pdf`, `filetype:xls`, `filetype:ppt`, etc.
+## 15) Quick recipes
+- **Policy change trace:** `site:example.com (policy OR terms) filetype:pdf 2023..2025` then use Wayback for diffs.  
+- **Org chart hunt:** `site:example.com ("organization chart" OR orgchart OR "team structure") filetype:(pdf OR pptx)`.  
+- **Contact leads:** `"@example.com" -site:example.com -site:linkedin.com` to find external mentions.  
+- **Event sourcing:** `"call for papers" "{topic}" 2025 filetype:(pdf OR docx)`.
 
-**Real OSINT Examples:**
-- `filetype:xls "guest list" site:marriott.com` — targeting exposed travel data  
-- `filetype:pdf "strategic planning meeting" site:.gov.ph` — finding internal government documents from the Philippines  
-- `filetype:ppt "threat intelligence briefing" AND "Lockheed Martin"` — leaked corporate decks  
-- `filetype:csv "employee directory" site:*.edu` — academic institutions leaking HR records
-
-✅ **Why it works:** Perfect for uncovering internal reports, planning documents, credential lists, or regulatory filings.
-
----
-
-## 🌍 Language-Specific Searches
-
-**What it is:**  
-Searching in native languages or localized domains to access region-specific data.
-
-**Real OSINT Examples:**
-- `"contrabando de armas" site:.mx` — firearm smuggling in Mexico  
-- `"информационная безопасность" site:.ru` — Russian cyber policy documents  
-- `"protestas estudiantiles" site:.cl` — Chilean student protest activity  
-- Use DeepL or native sources to generate accurate search terms before querying
-
-✅ **Why it works:** Critical when monitoring international incidents, region-specific disinformation, or domestic narratives in native languages.
-
----
-
-## ⏱️ Time-Restricted Searches
-
-**What it is:**  
-Filters search results by date, allowing you to analyze event timelines or retrieve only recent activity.
-
-**Where to use it:**  
-Google → Tools → Any Time → Custom Range
-
-**Real OSINT Examples:**
-- `"data leak" site:twitter.com` filtered to last 24 hours — tracking new breach chatter  
-- `"chemical spill" site:reuters.com` for June 2023 only — environmental event verification  
-- `"suspect arrested" site:news.com.au` filtered by month — verifying law enforcement actions  
-- Combine with Boolean and site searches for precise timeline mapping
-
-✅ **Why it works:** Crucial in incident response, situational awareness, and tracking how narratives evolve over time.
-
----
-
-## 🧾 Cached & Archived Content
-
-**What it is:**  
-Gives you access to modified, censored, or deleted web pages via caching or archiving platforms.
-
-**Real OSINT Examples:**
-- `cache:example.com/press-release` — Google’s last cached version  
-- [archive.today](https://archive.today) URL submissions to preserve volatile content  
-- Use [Wayback Machine](https://archive.org/web) to retrieve a pre-takedown version of a page  
-- Track before/after changes in company policy pages, breach disclosures, or government directives
-
-✅ **Why it works:** You don’t just collect information — you preserve it before it vanishes.
-
----
-
-## 🖼️ Reverse Image Search
-
-**What it is:**  
-Finds other instances of an image online, helps verify origin, spot fakes, or identify people/places.
-
-**Tools:**  
-- [TinEye](https://tineye.com) — Best for historical image tracking  
-- [Yandex Images](https://yandex.com/images) — Excellent for facial and location recognition  
-- [Google Images](https://images.google.com) — Good general-purpose match  
-- [InVID](https://www.invid-project.eu/tools/invid-verification-plugin/) — Video/thumbnail forensics
-
-**Real OSINT Examples:**
-- Use Yandex to find VK profiles that reused the same selfie  
-- Run a building photo through Google Images to identify its location in a conflict zone  
-- TinEye a meme image to find its earliest known use (for disinfo analysis)  
-- Use InVID to validate a viral protest video’s location and date
-
-✅ **Why it works:** Visual confirmation beats speculation. Reverse search supports attribution, authenticity, and timeline building.
-
----
-
-## 🌊 Deep Web Discovery
-
-**What it is:**  
-Surfacing data that is unindexed, buried in databases, or gated behind search functions.
-
-**Real OSINT Examples:**
-- Search customs data inside PIERS or ImportGenius for maritime shipment analysis  
-- Use `site:vk.com` + keywords to access Russian-language user data  
-- Dive into internal search portals like UN treaty databases, academic journals, or court archives  
-- Combine with automation (e.g., n8n, Puppeteer) to extract data behind login walls or session-based pages
-
-✅ **Why it works:** Real intelligence lives where most search engines can't go.
-
----
-
-## 🧰 OSINT Query Toolkit
-
-| Task                        | Tools / Syntax                                              |
-|-----------------------------|-------------------------------------------------------------|
-| Complex logic filtering     | `AND`, `OR`, `NOT`, `"..."`, `()`                          |
-| Platform-specific targeting | `site:`, `.tld`, language filters                          |
-| Data/doc discovery          | `filetype:pdf`, `filetype:xls`, `filetype:csv`             |
-| Visual forensics            | TinEye, Yandex, Google Images, InVID                       |
-| Archived content recovery   | Wayback Machine, Archive.today, `cache:`                   |
-| Time-focused investigations | Google → Tools → Time Range                                |
-| Deep web penetration        | Database search, aggregators, custom scraping (n8n, MCP)   |
-
----
-
-> ⚡ **Pro tip**: Master the syntax. Stack the techniques. Automate where possible. OSINT is as much about logic as it is about discovery.
-```
-
----
+### Changelog (2025-08-10)
+- Consolidated cross-engine operator set; clarified Google/Bing/Yandex deltas.  
+- Added de-biasing/persona tactics and noise-control patterns.  
+- Included reproducibility checklist for investigative documentation.
