@@ -1,68 +1,64 @@
-# 🧠 User Handle Pivoting Cheat Sheet 🔍
+# User Handle Pivoting OSINT Cheat Sheet
+_Last verified: 2025-08-10 • Scope: open-source collection only (no credentialed access). Use ethically and abide by local law & platform ToS._
 
-**Purpose:** Identify digital footprints by tracing usernames across platforms to uncover associated accounts, behaviors, and identity links.
+## 1) Purpose
+User handle pivoting is the process of taking a known username or handle from one platform and finding the same or related handles across other platforms, services, and datasets. This helps build an identity graph and uncover related accounts.
 
----
+## 2) Discovery & collection workflow
+1) Seed  
+   - Start with one confirmed handle from a trusted source.  
+2) Expand entities  
+   - Search exact handle across multiple social media, forums, marketplaces, and gaming platforms.  
+   - Look for close variants (leet speak, underscores, numbers, shortened forms).  
+3) Corroborate & date  
+   - Verify matches by comparing bio text, profile pictures, posting style, and linked websites.  
+4) Capture  
+   - Save URLs, screenshots, and metadata for each matched profile.
 
-## 🛠️ Tools for Username Searches
+## 3) Search techniques
+- Manual Google/Bing search: `"username" site:twitter.com OR site:instagram.com ...`  
+- Specialized tools:  
+  - **WhatsMyName** (whatsmyname.app) — checks hundreds of platforms.  
+  - **Namechk.com** — checks username availability across domains and platforms.  
+  - **Namecheckup.com** — similar to Namechk, with extended coverage.  
+- API-based queries (where allowed) to confirm username existence.
 
-| Tool             | Description                                                    | Link                                                                 |
-|------------------|----------------------------------------------------------------|----------------------------------------------------------------------|
-| **WhatsMyName**  | Search over 500 platforms for exact username matches.          | [whatsmyname.app](https://whatsmyname.app)                           |
-| **Namecheckup**  | Checks username availability across domains and social media.  | [namecheckup.com](https://namecheckup.com)                           |
-| **Maigret**      | Command-line tool for searching profiles across 1000+ sites.   | [GitHub](https://github.com/soxoj/maigret)                           |
-| **Sherlock**     | Python-based scanner for usernames on social platforms.        | [GitHub](https://github.com/sherlock-project/sherlock)              |
-| **Blackbird**    | Profile reconnaissance and link analysis for known usernames.  | [GitHub](https://github.com/p1ngul1n0/blackbird)                    |
+## 4) What each surface gives you
+- **Social media profiles**: Bio text, external links, posting frequency.  
+- **Gaming handles**: Achievements, associated communities.  
+- **Marketplaces**: Seller ratings, item listings, contact info.  
+- **Forums/communities**: Post history, join date, topic focus.
 
----
+## 5) Cross-platform patterns to check
+- Same handle reused exactly across multiple services.  
+- Handle plus a predictable number suffix (e.g., johnsmith → johnsmith123).  
+- Reverse of handle or initials combined with numbers.  
+- Domain names registered matching handle.
 
-## 🧭 Methodology & Techniques
+## 6) Third-party tools & archives (use cautiously)
+- **Namecheckup** — profile and domain search.  
+- **Usersearch.org** — cross-platform profile discovery.  
+- **Social-Searcher.com** — keyword and handle mentions across social/web.  
+- **Wayback Machine** — historical username use on now-deleted profiles.  
+**Caveats:** Many tools return false positives—manual verification is essential.
 
-### 1. **Exact Match Search**
-- Run target username through tools like WhatsMyName or Sherlock.
-- Confirm active profiles via profile photos, posting dates, or content overlap.
+## 7) Stabilizing URLs
+- Store canonical profile URLs without session or referral parameters.  
+- Example: `https://x.com/username` instead of `https://x.com/username?ref=xyz`.
 
-### 2. **Username Variations**
-- Create permutations of the original handle:
-  - Example: `johndoe` ➝ `john.doe`, `johndoe1`, `j0hnd03`, `doejohn`
-- Use regular expressions or scripting for automation with Maigret/Sherlock.
+## 8) Current 2025 behaviors
+- Some major platforms hide profiles from public search unless logged in—tools may miss these.  
+- Username squatting and impersonation can lead to false matches; check join date and content.  
 
-### 3. **Reverse Image Search**
-- Save and upload avatars or photos to:
-  - [Google Images](https://images.google.com), [Yandex](https://yandex.com/images), [Bing Visual Search](https://www.bing.com/visualsearch)
-- Identify reuse of avatars across platforms or fake identities.
+## 9) Rate limits, gating & tips
+- Many username checkers have request limits—rotate between services.  
+- Consider batch lookups in low-volume intervals to avoid tool throttling.
 
-### 4. **Email/User Handle Correlation**
-- Check if email patterns match usernames (e.g., `j.doe@gmail.com` ⇄ `jdoe`).
-- Run the email through:
-  - HaveIBeenPwned
-  - Dehashed (paid)
-  - Hunter.io for domain-linked identities
+## 10) Documentation hygiene
+- Record: handle searched, platforms checked, matched URLs, match confidence level, capture time (UTC).  
+- Maintain a pivoting log to track search coverage and reduce duplicate effort.
 
-### 5. **Cross-Platform Validation**
-- Compare bios, profile pictures, writing style, timestamps.
-- Look for linkages like:
-  - Same PFP on GitHub and Twitter
-  - YouTube channel links in TikTok bios
-  - Linked email or domain in multiple profiles
-
----
-
-## 🧩 Advanced Tactics
-
-- **Metadata Scraping**: Where legal, analyze platform metadata (e.g., GitHub commits, Reddit post timing).
-- **Correlation via Follow Graph**: Analyze shared followers/following lists.
-- **Language + Emoji Fingerprint**: People often write similarly across platforms.
-
----
-
-## ⚠️ Ethical Considerations
-
-- ✅ Stick to public, voluntarily provided, or leaked data that is publicly indexed.
-- ❌ Never brute-force or scrape behind logins.
-- ⚖️ Respect all applicable privacy laws (GDPR, CCPA, etc.) and platforms' TOS.
-- 🧭 Avoid bias: confirmation bias is a major risk in pivot investigations.
-
----
-
-**Trace with care. Confirm with context. Pivot with ethics.** 🚀🔍
+### Changelog (2025-08-10)
+- Added updated username discovery tools with 2025 coverage.  
+- Expanded common handle variant patterns to investigate.  
+- Included verification tips to reduce false positives.
