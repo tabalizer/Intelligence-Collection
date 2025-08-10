@@ -1,80 +1,86 @@
-# 🕵️‍♂️ OSINT Cheat Sheet: Wayback Machine & Internet Archive
+# Wayback Machine OSINT Cheat Sheet
+_Last verified: 2025-08-10 • Scope: open-source collection only. All activities must comply with local law, copyright rules, and platform ToS._
 
 ---
 
-## 🌐 Overview
-- 🗂️ **What?** A free digital archive for websites, books, media, and more  
-- 📅 **Founded:** 1996  
-- 📈 **Coverage:** Over 800 billion webpages archived  
+## 🎯 1) Purpose
+To leverage the Internet Archive’s **Wayback Machine** for retrieving historical versions of websites, uncovering deleted content, and tracking changes over time for OSINT investigations.
 
 ---
 
-## 🎯 OSINT Use Cases
-- 🔄 **Recover deleted content** (pages, social posts, files)  
-- 🧠 **Track content changes** (policy updates, edits, removals)  
-- 🔍 **Investigate infrastructure** (old portals, subdomains, endpoints)  
-- 📑 **Audit corporate history** (claims, PR, sustainability, product timelines)  
-- 🔐 **Preserve digital evidence** (legal, journalistic, intelligence purposes)  
+## 🛠 2) Core Tool Arsenal
+
+### Primary Interface
+- **Wayback Machine Web UI** — https://web.archive.org — Search by URL and select snapshots by date/time.
+- **Wayback Machine Chrome/Firefox Extension** — Quick archive check and save from browser.
+- **Save Page Now** — https://web.archive.org/save — Immediate manual archiving of a live page.
+
+### APIs & Bulk Access
+- **Wayback CDX API** — Query snapshot lists programmatically.  
+  Example: `http://web.archive.org/cdx/search/cdx?url=example.com&output=json`
+- **Wayback Availability API** — Check if a page is archived without loading it.  
+  Example: `https://archive.org/wayback/available?url=example.com`
+
+### Third-Party Helpers
+- **Wayback Machine Downloader** (CLI tool) — Download full archived sites.  
+- **Archive.today** — Alternate archiving service (captures pages Wayback may miss).  
+- **Memento Time Travel** — Aggregate multiple web archives.
 
 ---
 
-## 🚀 Archive Query Formats
-```text
-# Full archive history
-https://web.archive.org/web/*/example.com
-
-# Specific date snapshots (Jan 1, 2022)
-https://web.archive.org/web/20220101*/example.com
-
-# All subdomains
-https://web.archive.org/web/*/sub.example.com/*
-
-# Specific page path
-https://web.archive.org/web/*/example.com/login
-```
+## 🔍 3) Investigation Workflow
+1. **Identify Target URL** — Domain, subdomain, or specific page.  
+2. **Query Archive** — Search in Wayback for earliest and latest snapshots.  
+3. **Compare Versions** — Identify additions, removals, or edits using side-by-side tools.  
+4. **Corroborate** — Verify removed content via other archives or cached search engine results.  
+5. **Capture** — Download relevant snapshots and store locally.
 
 ---
 
-## 🛠️ Tools & Tactics
-- 🧩 **Compare Snapshots**  
-  Use Wayback UI “Compare” to highlight differences between two dates.
-
-- 📂 **Download Archived Files**  
-  Right-click → Save As on snapshots to preserve HTML, PDFs, images.
-
-- 🕵️ **Extract Metadata**  
-  Use `exiftool` or `strings` on archived files to pull embedded timestamps and authorship.
-
-- 🔎 **Google Cache Backup**  
-  Search: `cache:example.com` in Google to cross-reference with live/archived version.
-
-- 📜 **List Archive Captures (Wayback CDX API)**  
-  Example:  
-  `http://web.archive.org/cdx/search/cdx?url=example.com&output=json&fl=timestamp,original`
+## 🧩 4) Pivoting Opportunities
+- Find deleted product listings, blog posts, or policy pages.  
+- Recover old employee directories or team pages.  
+- Extract metadata from archived images/documents hosted on the site.  
+- Discover legacy subdomains via archived navigation menus.
 
 ---
 
-## ⚠️ Known Limitations
-| Limitation                | Description                                          |
-|---------------------------|------------------------------------------------------|
-| 🔍 Partial snapshots       | JavaScript-heavy or robots.txt-blocked sites may be missing |
-| ⏱️ Time delay              | Some captures are delayed weeks or months            |
-| 🌍 Regional restrictions   | Some content may be geo-blocked or legally removed   |
+## 📌 5) Key Clues from Archived Pages
+- **Text Changes** — Policy updates, contact info, organizational changes.  
+- **Image Changes** — Logo updates, product photos, event pictures.  
+- **Hyperlink Patterns** — Changes in outbound or internal link structures.  
+- **Tech Stack Evidence** — Legacy scripts, analytics codes, server headers.
 
 ---
 
-## ✅ Best Practices
-- Always verify snapshot **timestamp** in the top banner  
-- Use multiple snapshot **dates** to confirm changes  
-- Archive content **yourself** at [archive.org/save](https://archive.org/save) to preserve evidence  
-- Document **URL, access time, and snapshot URL** in notes or reports  
-- Cross-reference with **Google Cache**, **DNS records**, and **WHOIS history**
+## 🌐 6) Cross-Platform Verification
+- Use **WHOIS historical data** alongside archived contact details.  
+- Check old social media embeds for now-deleted posts.  
+- Compare archived pricing/policies with customer complaints or legal filings.
 
 ---
 
-## 💡 Snapshot Preservation Workflow
-1. Search the URL using wildcard format  
-2. Select and open relevant snapshot  
-3. Use “View Source” or download files  
-4. Run tools like `exiftool`, `strings`, or `hashdeep`  
-5. Save snapshot URL and archive a local copy  
+## ⚠️ 7) 2025 Environment & Cautions
+- Some sites block crawling by archive.org — use alternate archives.  
+- Not all snapshots are complete — embedded media may be missing.  
+- Robots.txt changes may hide older content from current view.
+
+---
+
+## 🛡 8) Investigator Tips
+- Use **URL wildcards** (e.g., `example.com/*`) to discover subpages.  
+- Check **snapshot frequency** — bursts of activity can indicate major site changes.  
+- Archive pages immediately upon discovery if they may be removed.
+
+---
+
+## 🗂 9) Documentation Hygiene
+- Record: target URL, snapshot dates, archive URLs, key findings, and confidence rating.  
+- Store downloaded HTML and media files in local investigation folders.
+
+---
+
+### 📜 Changelog (2025-08-10)
+- Added API and bulk download tools.  
+- Included pivot opportunities for metadata extraction.  
+- Updated cautions for 2025, including robots.txt impacts.
