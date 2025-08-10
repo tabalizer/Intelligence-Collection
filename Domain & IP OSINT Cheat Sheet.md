@@ -1,106 +1,101 @@
-# 🧠 Domain & IP OSINT Cheat Sheet (Advanced) 🌐
-
-**Objective:** Conduct deep reconnaissance on domains and IPs with an intelligence-focused approach — mapping infrastructure, attribution, and activity over time.
-
----
-
-## 🛠️ Core Recon Tools
-
-| Tool             | Functionality                                          | URL                               |
-|------------------|--------------------------------------------------------|-----------------------------------|
-| **SecurityTrails**  | WHOIS, subdomains, historical DNS, passive DNS      | https://securitytrails.com        |
-| **Shodan**          | Port scanning, banner grabbing, device fingerprint  | https://shodan.io                 |
-| **Censys**          | TLS certs, services over time, host search          | https://censys.io                 |
-| **LeakIX**          | Exposed services, leaked files, dev portals         | https://leakix.net                |
-| **GreyNoise**       | IP behavior classification (benign/malicious)       | https://viz.greynoise.io          |
-| **VirusTotal**      | IP/domain malware reports, graph relationships      | https://www.virustotal.com        |
-| **FOFA**            | Chinese Shodan alternative, powerful for Asia infra | https://fofa.info                 |
+# Domain & IP OSINT Cheat Sheet
+_Last verified: 2025-08-10 • Scope: open-source collection only (no credentialed access). All methods must comply with local law and data privacy regulations._
 
 ---
 
-## 🧭 Tactical Techniques & Workflows
-
-### 🔍 1. **Domain Attribution via WHOIS**
-- Use historical WHOIS to uncover:
-  - Owner patterns (reuse of email, phone)
-  - Company registration, address reuse
-  - Change of ownership timelines
-- Tools: SecurityTrails, DomainTools (paid), ViewDNS WHOIS History
+## 🎯 1) Purpose
+To investigate domain names, IP addresses, and related infrastructure using open-source intelligence — uncovering ownership, hosting, history, and technical relationships.
 
 ---
 
-### 🧬 2. **Subdomain Mapping (Infrastructure Discovery)**
-- Combine:
-  - `Amass`, `Subfinder`, `crt.sh`, `dnsx`
-  - Zone transfer attempts (`dig axfr`)
-- Cross-reference discovered subdomains in:
-  - Shodan (open ports), VirusTotal (malicious activity), LeakIX (leaked panels)
+## 🛠 2) Core Tool Arsenal
+
+### WHOIS & Registration Data
+- **Whois.domaintools.com** — Domain WHOIS, history (paid for advanced features).  
+- **Whoisxmlapi.com** — API and web WHOIS lookups.  
+- **ViewDNS.info** — Multi-tool including WHOIS, reverse WHOIS, and DNS history.  
+- **ICANN WHOIS Lookup** — Official WHOIS registry query.
+
+### DNS & Infrastructure
+- **DNSDumpster.com** — DNS record enumeration, subdomain mapping.  
+- **SecurityTrails.com** — DNS history, IP blocks, associated domains.  
+- **Spyse.com** — Infrastructure and SSL certificate intelligence.  
+- **crt.sh** — Certificate Transparency logs for domains/subdomains.  
+- **Shodan.io** — Search engine for internet-connected devices by IP/domain.  
+- **Censys.io** — SSL/TLS and host scan data.
+
+### IP Address Intelligence
+- **ipinfo.io** — IP geolocation, ASN, hosting provider.  
+- **MaxMind GeoLite2** — Free geolocation database.  
+- **AbuseIPDB.com** — IP abuse reports and history.  
+- **BGPlay / RIPEstat** — BGP routing and ASN data.
+
+### Historical & Archival
+- **Wayback Machine** — Archived versions of websites.  
+- **ViewDNS Reverse IP Lookup** — Domains hosted on the same IP.  
+- **SecurityTrails Historical DNS** — Past DNS and hosting changes.
 
 ---
 
-### 🧪 3. **IP Analysis & Pivoting**
-- Use `Censys` or `Shodan` to:
-  - Discover what else is hosted on same /24
-  - Identify devices running on same ASN
-- Use `SecurityTrails` for reverse IP — other domains hosted on that IP
+## 🔍 3) Investigation Workflow
+1. **Identify**  
+   - Start with domain or IP from a known source.  
+2. **Resolve**  
+   - Use DNS lookups to find associated IP(s), MX records, TXT/SPF/DKIM records.  
+3. **Correlate**  
+   - Map hosting provider, ASN, and co-hosted domains.  
+4. **Corroborate**  
+   - Cross-check WHOIS, certificate logs, and passive DNS records.  
+5. **Capture**  
+   - Archive findings with timestamps, screenshots, and exportable data.
 
 ---
 
-### 🌍 4. **Geolocation & Hosting Insight**
-- Combine:
-  - IPinfo.io + MaxMind → Get ASN, ISP, geo
-  - ARIN/RIPE WHOIS for BGP data
-  - Greynoise → Determine if IP is scanning the web or linked to malware campaigns
+## 🧩 4) Pivoting Opportunities
+- Reverse WHOIS: find all domains registered with same email/organization.  
+- Reverse IP: discover all domains sharing the same IP address.  
+- SSL/TLS certificate search: find other domains using same certificate.  
+- Subdomain discovery: identify development, staging, or hidden endpoints.
 
 ---
 
-### 🕵️ 5. **Passive DNS & Historic DNS Tracking**
-- Identify:
-  - Domain resolution history
-  - Infrastructure changes (e.g., moved from OVH to Cloudflare)
-- Tools: RiskIQ (Community), DNSDB (Farsight, paid), SecurityTrails
+## 📌 5) Key Clues in Domain & IP Data
+- Registrant name, email, organization.  
+- Creation and expiry dates (can suggest longevity or throwaway nature).  
+- Name server provider (can reveal registrar or hosting habits).  
+- ASN and hosting provider patterns.  
+- Co-located services (mail servers, FTP hosts, VPN gateways).
 
 ---
 
-### 🧠 6. **Correlation & Timeline Building**
-- Use VirusTotal Graph or Maltego:
-  - Map domains ↔ IPs ↔ certificates ↔ WHOIS email addresses
-  - Timeline server behavior (e.g., open RDP > then blocked > then malware)
+## 🌐 6) Cross-Platform Verification
+- Search registrant email across breach databases (e.g., HaveIBeenPwned).  
+- Check IP in OSINT tools like Shodan and Censys for exposed services.  
+- Look up associated domains in search engines for linked activity.
 
 ---
 
-## 🔐 Certificate-Based Discovery (TLS Pivots)
-- Search `Censys` or `crt.sh`:
-  - Common Name (CN) or SAN reuse across domains
-  - Self-signed certs that indicate dev/test environments
-  - Cert hash reuse = same server across IPs
+## ⚠️ 7) 2025 Environment & Cautions
+- GDPR and privacy proxy services hide most WHOIS details — use historical data for older records.  
+- Cloud hosting (AWS, Azure, GCP) often obfuscates physical hosting clues — focus on service metadata.  
+- Some services block repeated lookups — rotate queries.
 
 ---
 
-## ⚙️ Bonus Tools & Scripts
-- `ASNmap`: Map out IP space of an entire ASN
-- `tlsx`: TLS scanner to identify endpoints, grab certs fast
-- `massdns`: High-performance DNS resolver for subdomain bruteforce
-- `dnstwist`: Find typo-squatting or phishing variants
+## 🛡 8) Investigator Tips
+- Always cross-check domain/IP findings against at least two independent sources.  
+- When possible, enrich with certificate transparency and passive DNS to spot hidden links.  
+- Maintain a visual map of infrastructure for complex investigations.
 
 ---
 
-## ⚠️ Ethics & Legal Compliance
-
-- ✅ Stick to publicly available information
-- ❌ Don’t scan systems without authorization
-- ⚠️ Watch data residency and GDPR-sensitive queries
+## 🗂 9) Documentation Hygiene
+- Record: domain/IP, query date (UTC), sources used, findings, and confidence rating.  
+- Archive raw WHOIS/DNS outputs alongside your analysis.
 
 ---
 
-## 🧩 Suggested Workflow
-
-1. **Initial Domain** ➝ WHOIS & Certs ➝ Discover Subdomains
-2. **Subdomains** ➝ Resolve IPs ➝ Shodan/Censys Scan
-3. **IP Blocks** ➝ ASN Mapping ➝ Related Infra Discovery
-4. **Timeline** ➝ Historical DNS + Certs + VT Graph
-5. **Attribution** ➝ WHOIS Email ➝ Other Domains
-
----
-
-🚀 *Use the internet against itself. Map, track, attribute — legally and intelligently.*
+### 📜 Changelog (2025-08-10)
+- Expanded DNS tool list with historical and passive DNS options.  
+- Added ASN/BGP investigation resources.  
+- Updated privacy & GDPR considerations for WHOIS in 2025.
