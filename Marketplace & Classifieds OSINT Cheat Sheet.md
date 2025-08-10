@@ -1,100 +1,70 @@
-# 🛒 Marketplace & Classifieds OSINT Cheat Sheet 🕵️‍♂️
+# Marketplace & Classifieds OSINT Cheat Sheet
+_Last verified: 2025-08-10 • Scope: open-source collection only (no credentialed access). Use ethically and abide by local law & platform ToS._
 
-**Purpose:** Investigate individuals, groups, or items across regional online marketplaces and classifieds. This includes identifying fraudulent listings, seller networks, stolen goods, or illicit services.
+## 1) Common marketplaces & classified platforms
+- **Facebook Marketplace**: https://www.facebook.com/marketplace/  
+- **Craigslist**: https://www.craigslist.org/  
+- **eBay**: https://www.ebay.com/  
+- **Leboncoin** (FR): https://www.leboncoin.fr/  
+- **Gumtree** (UK/AU): https://www.gumtree.com/  
+- **OLX** (various countries): https://www.olx.com/  
+- **Finn.no** (NO): https://www.finn.no/  
+- **Avito** (RU): https://www.avito.ru/  
+- **Car and property portals** vary by region (e.g., Autotrader, Zillow).
 
----
+## 2) Discovery & collection workflow
+1) Seed  
+   - Start with seller username, phone number, email, or listing ID.  
+2) Expand entities  
+   - From listings: capture title, description, price, location, seller profile, contact details, and images.  
+   - Reverse search images for reused photos across platforms.  
+3) Corroborate & date  
+   - Check identical item descriptions on multiple platforms.  
+   - Cross-reference phone/email in OSINT people search tools.  
+4) Capture  
+   - Save listing URL, screenshots, posted date, and any seller identifiers.
 
-## 🌍 Region-Specific Marketplaces
+## 3) Search techniques
+- Google dorking:  
+  `"keyword" site:facebook.com/marketplace`  
+  `"keyword" site:craigslist.org`  
+  `"phone number" OR "email"` across marketplaces.  
+- Use cached pages from Google or Bing to access removed listings.  
+- Search image hashes on Yandex, Google Lens, TinEye.
 
-### 🇺🇸 United States
-- **Craigslist** – Major metro-based classifieds: vehicles, rentals, personals.
-- **OfferUp / Letgo (now merged)** – Peer-to-peer item sales, often mobile-first.
-- **Facebook Marketplace** – Common for local sales; can reveal identity through social profiles.
-- **Armslist** – Firearms classifieds (controversial/legal grey area).
+## 4) What each surface gives you
+- **Listing page**: Item details, seller info, posted date, location.  
+- **Seller profile**: Other items for sale, join date, reviews/ratings.  
+- **Image metadata**: Occasionally retained on less-moderated sites (EXIF may reveal GPS).  
 
-### 🇪🇺 Europe (General)
-- **eBay Kleinanzeigen (Germany)** – Now **KleiderKreisel**, Germany's main P2P classifieds.
-- **Leboncoin (France)** – Cars, property, jobs, and local sales.
-- **Wallapop (Spain)** – App-based secondhand market.
-- **Marktplaats (Netherlands)** – Broad classifieds portal.
+## 5) Cross-platform and handle pivoting
+- Many sellers use same phone/email across multiple marketplaces and social media.  
+- Reused images often lead to original source or additional listings.
 
-### 🇳🇴🇸🇪🇩🇰 Scandinavia
-- **FINN.no (Norway)** – Real estate, cars, jobs, and general classifieds.
-- **Blocket.se (Sweden)** – Popular for secondhand goods and vehicles.
-- **dba.dk (Denmark)** – Denmark’s leading private classifieds portal.
+## 6) Third-party tools & archives (use cautiously)
+- **SearchTempest** — multi-city Craigslist search.  
+- **Wayback Machine** — historical listing snapshots.  
+- **OSINT Combine Image Tools** — bulk reverse image search.  
+**Caveats:** Platform ToS may prohibit automated scraping—review before use.
 
-### 🌍 Africa
-- **Jiji (Nigeria, Kenya, Uganda, Ghana)** – Dominant classified platform across West/East Africa.
-- **Gumtree South Africa** – Similar to Craigslist; jobs, rentals, electronics.
+## 7) Stabilizing URLs
+- Some platforms include session or referral parameters—strip for a clean permanent link.  
+- Example: Remove `?ref=...` from Facebook Marketplace URLs.
 
-### 🌍 Middle East
-- **OpenSooq** – Widely used in Jordan, Iraq, Gulf countries for cars, housing, phones.
-- **Haraj (Saudi Arabia)** – Dominant Arabic classifieds platform.
-- **Dubizzle (UAE)** – Cars, rentals, jobs, and electronics.
+## 8) Current 2025 behaviors
+- Facebook Marketplace restricts some views without login; direct listing URLs sometimes bypass this.  
+- Craigslist remains fully public; older posts are removed after ~30-45 days.  
+- Many regional classifieds hide seller contact until logged in or inquiry sent.
 
-### 🇷🇺 Russia & Post-Soviet
-- **Avito.ru** – The #1 Russian classifieds site for jobs, goods, and more.
-- **Youla.ru** – Mobile-first competitor to Avito.
-- **Izi.kz / olx.kz (Kazakhstan)** – Common for local and regional buying/selling.
+## 9) Rate limits, gating & tips
+- Heavy image reverse searches may trigger rate limits—spread across multiple engines.  
+- Use VPN/location spoofing for region-locked marketplaces.
 
-### 🇨🇳 China
-- **58.com** – General classifieds (jobs, housing, cars).
-- **Ganji.com** – Often used alongside 58; job and rental scams commonly flagged.
-- **Taobao (C2C)** – While not a classic classifieds site, used for tracking sellers of banned/recalled goods.
+## 10) Documentation hygiene
+- Record: listing URL, capture date (UTC), seller handle, contact details, item description, price, and photos.  
+- Archive screenshots and downloaded images for analysis.
 
-### 🌏 Asia-Pacific
-- **Carousell (Singapore, Malaysia, Taiwan, Philippines)** – Social classifieds app.
-- **OLX India** – India’s widespread general classifieds.
-- **Mercari (Japan)** – Consumer-to-consumer e-commerce (especially collectibles).
-
----
-
-## 🧭 Investigation Techniques
-
-### 1. **Seller Profile Analysis**
-- Check usernames, phone numbers, profile photos, post timing.
-- Compare across platforms (e.g., same number on Craigslist and Facebook Marketplace).
-
-### 2. **Reverse Image Search**
-- Extract and reverse search item photos:
-  - Stolen goods: reused stock images, copied listings
-  - Tools: Google Images, Yandex, TinEye
-
-### 3. **Phone Number Tracing**
-- Use TrueCaller, Sync.me, or regional reverse lookup tools.
-- Search numbers in scam reporting databases (e.g., `scammer.info`, `numberguru.com`).
-
-### 4. **Handle Pivoting**
-- Use known usernames or seller handles in:
-  - Forums, Reddit, Telegram marketplaces
-  - Social platforms for seller identification (use Sherlock, WhatsMyName)
-
-### 5. **Archived Listings**
-- Use `archive.today` or `Wayback Machine` to capture disappearing listings.
-- Some sites auto-expire posts — archive fast.
-
-### 6. **Keyword Traps**
-- Monitor unusual keywords or pricing (e.g., high-end goods at absurd discounts).
-- Useful for scam spotting and sting setups (law enforcement context).
-
----
-
-## 🧩 Advanced Correlation
-
-- **Cross-reference item details** across platforms and countries.
-  - Stolen vehicle VINs, serial numbers (IMEI), specific item IDs
-- **Currency mismatch, language irregularities** = sign of offshore scammers
-- **Compare GPS coordinates or location metadata** in image EXIF (where legal)
-
----
-
-## ⚠️ Ethical & Legal Considerations
-
-- ✅ Stick to public listings and user profiles.
-- ❌ Do not attempt to access backend dashboards, impersonate buyers/sellers, or use scraping bots without permission.
-- ⚖️ Be aware of GDPR, data localization laws, and platform TOS.
-- 🧭 If working with law enforcement, follow proper evidence handling and chain-of-custody rules.
-
----
-
-**Track smarter. Think globally. Investigate ethically.** 🛍️🕵️‍♀️
+### Changelog (2025-08-10)
+- Added Facebook Marketplace login bypass notes.  
+- Updated reverse image search recommendations.  
+- Listed top regional marketplace URLs for OSINT reference.
