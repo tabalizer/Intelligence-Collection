@@ -19,7 +19,7 @@ DARKInt (Dark Web Intelligence) complements OSINT by gathering intelligence from
 - **Deep Web:** Unindexed but legitimate (databases, private networks).
 - **Dark Web:** Encrypted, anonymized networks (Tor `.onion`, I2P, ZeroNet).
 
-![Internet Iceberg](https://github.com/tabalizer/Intelligence-Collection/edit/main/DarkInt%20Cheat%20Sheet.md#:~:text=iceberg-,.,-png)
+![Internet Iceberg](https://github.com/tabalizer/Intelligence-Collection/blob/main/iceberg.png)
 
 **Access Tools:**  
 - Tor Browser — `.onion` sites  
