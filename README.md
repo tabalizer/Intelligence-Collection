@@ -8,7 +8,7 @@ These cheat sheets are intended for ethical OSINF activities. Always adhere stri
 ## 🧰 Usage:
 Each cheat sheet is structured to provide immediate actionable techniques:
 - Quick reference commands
-- Platform-specific OSINT methods
+- Platform-specific OSINF methods
 - Recommended OSINF tools and resources
 - Ethical usage guidelines
 
